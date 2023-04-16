@@ -1,0 +1,111 @@
+<html>
+    <head><title>HW 5</title></head>
+
+    <body>
+        <div id="main" style="border: 1px solid; width: 100%; height: 100%; position: relative; padding: 10;">
+            <h1>HW 5</h1>
+            <div id="part1" style="width: 50%; float: left;">
+                <h2>Part 1</h2>
+                <script type="text/javascript">
+                    document.write("<p>Enter a positive integer:</p>");
+
+                    function getData(num) {
+                        arr = []
+                        for (let i = 1; i < 21; i++) {
+                            arr.push(num*i)
+                        }
+                        return arr;
+                    }
+
+                    function tableCreate() {
+                        var elem = document.getElementById('num').value;
+                        let data = getData(elem);
+
+                        //const body = document.body;
+                        const part1div = document.getElementById("part1");
+                        var tbl;
+                        if (document.getElementById("MyTable") === null) {
+                            tbl = document.createElement('table');
+                            tbl.setAttribute("id", "MyTable");
+                            tbl.style.width = '100px';
+                            tbl.style.border = '1px solid black';
+                        }
+                        else {
+                            tbl = document.getElementById("MyTable");
+                        }
+
+                        for (let i=0; i < arr.length; i++) {
+                            var tr;
+                            var td;
+                            if (i%4==0) {
+                                tr = tbl.insertRow();
+                                td = tr.insertCell();
+                                td.appendChild(document.createTextNode(data[i]));
+                                td.style.border = '1px solid black';
+                            }
+                            else {
+                                td = tr.insertCell();
+                                td.appendChild(document.createTextNode(data[i]));
+                                td.style.border = '1px solid black';
+                            }
+
+                        }
+
+                        part1div.appendChild(tbl);
+                    }
+
+                </script>
+
+                <p>
+                    <form>
+                        <input id="num" type="number" value ="5" size="4">
+                        <input type="button" value="Calculate" onClick="tableCreate();">
+                    </form>
+                </p>
+
+                <script type="text/javascript">
+                    tableCreate();
+                </script>
+            </div>
+
+            <div id="part2" style="width: 50%; float: left;">
+                <h2>Part 2</h2>
+
+                <script type="text/javascript">
+                    function reverseString(str) {
+                            // return a new array of strings
+                        const arrayStrings = str.split("");
+                    
+                        // reverse the new created array elements
+                        const reverseArray = arrayStrings.reverse();
+
+                        // join all elements of the array into a string
+                        const joinArray = reverseArray.join("");
+                        
+                        // return the reversed string
+                        return joinArray;
+                    }
+                </script>
+
+                <p>
+                    <form>
+                        <input id="word" type="text" value="dog" size="4">
+                        <input id="button1" type="button" value="Go" onClick="calc();">
+                    </form>
+                </p>
+
+                <div id="target"></div>
+
+                <script type="text/javascript">
+                    function calc() {
+                        var t = document.getElementById("target");
+                        t.innerHTML = reverseString(document.getElementById('word').value);
+                    }
+
+                </script>
+
+                
+            </div>
+        </div>
+    </body>
+</html>
